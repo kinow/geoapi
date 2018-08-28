@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================
+         Maven 2 project configuration file
+         http://maven.apache.org/maven2/
+     ==================================================== -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.opengis</groupId>
+    <artifactId>geoapi-parent</artifactId>
+    <version>4.0-SNAPSHOT</version>
+  </parent>
+
+
+
+  <!-- ====================================================
+           Project description
+       ==================================================== -->
+  <groupId>org.opengis</groupId>
+  <artifactId>build-tools</artifactId>
+  <name>Processing tools for building GeoAPI</name>
+  <description>
+    Javadoc taglets and annotation processing tools for processing GeoAPI
+    after compilation. Those tools are used mostly for javadoc generation.
+  </description>
+
+  <!-- Following is a mandatory property for out custom directory layout. -->
+  <properties>
+    <module.name>org.opengis.geoapi.build</module.name>
+  </properties>
+
+
+
+  <!-- ====================================================
+           Developers and contributors
+       ==================================================== -->
+  <developers>
+    <developer>
+      <id>desruisseaux</id>
+      <name>Martin Desruisseaux</name>
+      <email>martin.desruisseaux@geomatys.com</email>
+      <organization>Geomatys</organization>
+      <organizationUrl>http://www.geomatys.com</organizationUrl>
+      <roles>
+        <role>Java developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+
+
+
+  <!-- ===========================================================
+           Compilation. Force the same configuration than the one
+           declared in parent POM when "jdk9" profile is enabled.
+       =========================================================== -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <release>9</release>
+          <excludes/>                   <!-- Cancel the excludes in parent pom.xml -->
+          <compilerArgs>
+            <arg>-Xdoclint:none</arg>   <!-- -Xdoclint causes a NullPointerException with JDK 10.0.1. -->
+          </compilerArgs>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax.measure</groupId>
+      <artifactId>unit-api</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+
+</project>

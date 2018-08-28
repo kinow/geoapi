@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================
+         Maven 2 project configuration file
+         http://maven.apache.org/maven2/
+     ==================================================== -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.opengis</groupId>
+    <artifactId>geoapi-parent</artifactId>
+    <version>4.0-SNAPSHOT</version>
+  </parent>
+
+  <!-- Following is a mandatory property for out custom directory layout. -->
+  <properties>
+    <module.name>org.opengis.example</module.name>
+  </properties>
+
+
+
+  <!-- ====================================================
+           Project description
+       ==================================================== -->
+  <groupId>org.opengis.example</groupId>
+  <artifactId>geoapi-examples</artifactId>
+  <name>GeoAPI examples</name>
+  <description>
+    Examples of a simple GeoAPI implementations.
+  </description>
+
+  <licenses>
+    <license>
+      <name>Public Domain</name>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+
+
+  <!-- ====================================================
+           Developers and contributors
+       ==================================================== -->
+  <developers>
+    <developer>
+      <id>desruisseaux</id>
+      <name>Martin Desruisseaux</name>
+      <email>martin.desruisseaux@geomatys.com</email>
+      <organization>Geomatys</organization>
+      <organizationUrl>http://www.geomatys.com</organizationUrl>
+      <roles>
+        <role>Java developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>
+
+
+
+  <!-- ====================================================
+           Dependencies
+       ==================================================== -->
+  <dependencies>
+    <dependency>
+      <groupId>org.opengis</groupId>
+      <artifactId>geoapi-pending</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.opengis</groupId>
+      <artifactId>geoapi-conformance</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>tec.units</groupId>
+      <artifactId>unit-ri</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax.vecmath</groupId>
+      <artifactId>vecmath</artifactId>
+    </dependency>
+  </dependencies>
+
+
+
+  <!-- ===========================================================
+           JAR packaging (anticipation for Java 9)
+       =========================================================== -->
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Automatic-Module-Name>
+                org.opengis.geoapi.examples
+              </Automatic-Module-Name>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

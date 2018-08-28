@@ -4,7 +4,7 @@
      This file is used for customization - the actual
      work is defined in the "nbproject" sub-directory.
 -->
-<project name="GeoAPI" default="default" basedir=".">
+<project name="GeoAPI" default="default" basedir="." xmlns:j2semodularproject="http://www.netbeans.org/ns/j2se-modular-project/1">
   <description>Builds, tests, and runs the project GeoAPI.</description>
   <import file="nbproject/build-impl.xml"/>
 
